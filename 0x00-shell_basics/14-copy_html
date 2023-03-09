@@ -1,2 +1,2 @@
 #!/bin/bash
-cd ..   mkdir -p html_backup  find "$(pwd)/" -maxdepth 1 -type f -name "*.html" -newer html_backup/ -exec cp {} html_backup/ \
+if [ ! -d "html_backup" ]; then mkdir "html_backup"; fi for file in $(find "$(pwd)/" -maxdepth 1 -type f -name "*.html") do if [ ! -e "html_backup/$(basename $file)" ]  [ "$file" -nt "html_backup/$(basename $file)" ] then cp "$file" html_backup/ fi
